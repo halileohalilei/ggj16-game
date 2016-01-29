@@ -13,15 +13,8 @@ namespace Assets.Scripts
 
         void Start ()
         {
-            var spriteRenderer = transform.FindChild("Renderer");
-            _animator = spriteRenderer.GetComponent<Animator>();
+            _animator = transform.FindChild("Renderer").GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody>();
-
-            spriteRenderer.rotation = Camera.main.transform.rotation;
-
-            _maxSpeed = 2.5f;
-
-//            Camera.main.transform.rotation;
         }
 	
         void FixedUpdate ()
