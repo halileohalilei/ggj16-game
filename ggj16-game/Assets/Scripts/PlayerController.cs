@@ -6,11 +6,22 @@ namespace Assets.Scripts
     {
 
         private Direction _direction;
-        [SerializeField] private Animator _animator;
+        private Animator _animator;
+        private Rigidbody _rigidbody;
+
+        [SerializeField] private float _maxSpeed;
 
         void Start ()
         {
-            _animator = GetComponent<Animator>();
+            var spriteRenderer = transform.FindChild("Renderer");
+            _animator = spriteRenderer.GetComponent<Animator>();
+            _rigidbody = GetComponent<Rigidbody>();
+
+            spriteRenderer.rotation = Camera.main.transform.rotation;
+
+            _maxSpeed = 2.5f;
+
+//            Camera.main.transform.rotation;
         }
 	
         void FixedUpdate ()
@@ -25,26 +36,31 @@ namespace Assets.Scripts
         {
             var vertical = Input.GetAxis("Vertical");
             var horizontal = Input.GetAxis("Horizontal");
+            var velocity = _rigidbody.velocity;
+            velocity += new Vector3(horizontal, 
+                                    0f, 
+                                    vertical);
+            
+            velocity = Vector3.ClampMagnitude(new Vector3(velocity.x, 0f, velocity.z), _maxSpeed);
+            velocity.y = _rigidbody.velocity.y;
+            _rigidbody.velocity = velocity;
+            transform.rotation = new Quaternion();
 
             if (vertical > 0)
             {
                 _direction = Direction.North;
-                Debug.Log("Turned north.");
             }
             else if (vertical < 0)
             {
                 _direction = Direction.South;
-                Debug.Log("Turned south.");
             }
             else if (horizontal > 0)
             {
                 _direction = Direction.East;
-                Debug.Log("Turned east.");
             }
             else if (horizontal < 0)
             {
                 _direction = Direction.West;
-                Debug.Log("Turned west.");
             }
             else
             {
