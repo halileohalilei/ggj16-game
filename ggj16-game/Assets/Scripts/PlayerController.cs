@@ -6,6 +6,7 @@ namespace Assets.Scripts
     {
 
         private Direction _direction;
+        [SerializeField] private Animator _animator;
 
         void Start () {
 	        _direction = Direction.Down;
