@@ -2,14 +2,15 @@
 
 namespace Assets.Scripts
 {
-    public class PlayerController : MonoBehaviour {
+    public class PlayerController : MonoBehaviour
+    {
 
-        // Use this for initialization
+        private Direction _direction;
+
         void Start () {
-	
+	        _direction = Direction.Down;
         }
 	
-        // Update is called once per frame
         void Update () {
 	
         }
