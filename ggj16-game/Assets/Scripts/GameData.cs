@@ -10,10 +10,12 @@ namespace Assets.Scripts
 
         private GameLevel _currentLevel;
         private int _pointsCollectedThisLevel;
-        private int _totalPointsCollected;
         private float _remainingTimeInThisLevel;
 
+        private static int _totalPointsCollected;
+
         private bool _firstPhaseEnded = false;
+        private bool _startSecondPhase = false;
 
         private static GameData _instance;
 
@@ -33,8 +35,7 @@ namespace Assets.Scripts
             _instance = this;
 
             _uiHandler = GameObject.Find("Canvas").GetComponent<UIHandler>();
-
-            _totalPointsCollected = 0;
+            
             _remainingTimeInThisLevel = 20f;
 
             ChangeLevel();
@@ -84,10 +85,23 @@ namespace Assets.Scripts
             }
             else
             {
-                if (Vector3.Magnitude(_cameraTargetPos - Camera.main.transform.position) > 0.001f)
+                if (_isCameraMoving)
                 {
-                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, 
+                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position,
                         _cameraTargetPos, _cameraSpeed * Time.deltaTime);
+                    if (Vector3.Magnitude(_cameraTargetPos - Camera.main.transform.position) < 0.01f)
+                    {
+                        _isCameraMoving = false;
+                        _startSecondPhase = true;
+                    }
+                }
+                else
+                {
+                    if (_startSecondPhase)
+                    {
+                        _uiHandler.StartCountdown();
+                        _startSecondPhase = false;
+                    }
                 }
             }
         }
@@ -118,6 +132,8 @@ namespace Assets.Scripts
             _cameraTargetPos = camTransform.position;
             _cameraTargetPos = magicCircle.position;
             _cameraTargetPos = _cameraTargetPos - camTransform.forward*6f;
+
+            _isCameraMoving = true;
         }
     }
 }
