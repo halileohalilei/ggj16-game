@@ -6,10 +6,10 @@ namespace Assets.Scripts
 {
     class PlaneManager : MonoBehaviour
     {
-        private const int SouthEnd = -50;
-        private const int NorthEnd = 50;
-        private const int EastEnd = 50;
-        private const int WestEnd = -50;
+        private const int SouthEnd = -25;
+        private const int NorthEnd = 25;
+        private const int EastEnd = 25;
+        private const int WestEnd = -25;
 
         public GameObject ObstaclePrefab = null;
         public GameObject CollectiblePrefab = null;
