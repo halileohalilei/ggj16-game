@@ -8,6 +8,7 @@ namespace Assets.Scripts
         private Direction _direction;
         private Animator _animator;
         private Rigidbody _rigidbody;
+        private GameObject _cameraAnchor;
 
         [SerializeField] private float _maxSpeed;
 
@@ -15,6 +16,7 @@ namespace Assets.Scripts
         {
             _animator = transform.FindChild("Renderer").GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody>();
+            _cameraAnchor = GameObject.Find("CameraAnchor");
         }
 	
         void FixedUpdate ()
@@ -23,6 +25,7 @@ namespace Assets.Scripts
             {
                 _animator.SetInteger("Direction", (int) _direction);
             }
+            _cameraAnchor.transform.position = transform.position;
         }
 
         bool UpdateInput()
