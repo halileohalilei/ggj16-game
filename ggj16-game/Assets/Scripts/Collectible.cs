@@ -7,7 +7,6 @@ namespace Assets.Scripts
 
         void OnCollisionEnter()
         {
-            Debug.Log("Collided");
             //TODO add points
             Destroy(gameObject);
         }
