@@ -14,6 +14,7 @@ namespace Assets.Scripts
         [SerializeField] private GameObject ObstaclePrefab = null;
         [SerializeField] private GameObject CollectiblePrefab = null;
         [SerializeField] private GameObject MagicCircle = null;
+        [SerializeField] private GameObject Plane = null;
 
         [SerializeField]
         private int ObstacleCount = 0;
@@ -22,13 +23,13 @@ namespace Assets.Scripts
         
         void Start()
         {
-            Debug.Log("PlaneManager.Start()");
+//            Debug.Log("PlaneManager.Start()");
             GeneratePlane();
         }
 
         public void GeneratePlane()
         {
-            GameLevel currentLevel = GameLevel.Classic;//GameData.GetInstance().GetCurrentLevel();
+            GameLevel currentLevel = GameLevel.Metal;//GameData.GetInstance().GetCurrentLevel();
 
             GenerateObstacles(currentLevel);
             GenerateCollectibles(currentLevel);
@@ -36,6 +37,31 @@ namespace Assets.Scripts
             var randomX = random.NextDouble() * (EastEnd - WestEnd - 2) + WestEnd - 1;
             var randomZ = random.NextDouble() * (NorthEnd - SouthEnd - 2) + SouthEnd - 1;
             MagicCircle.transform.position = new Vector3((float) (randomX/2), 0.1f, (float) (randomZ/2));
+
+            MeshRenderer planeRenderer = Plane.GetComponent<MeshRenderer>();
+            switch (currentLevel)
+            {
+                case GameLevel.Classic:
+                {
+                    planeRenderer.material.color = Color.green;
+                    break;
+                }
+                case GameLevel.Electronic:
+                {
+                    planeRenderer.material.color = Color.blue;
+                    break;
+                }
+                case GameLevel.Jazz:
+                {
+                    planeRenderer.material.color = Color.white;
+                    break;
+                }
+                case GameLevel.Metal:
+                {
+                    planeRenderer.material.color = new Color(0.25f, 0.25f, 0.25f,1f);
+                    break;
+                }
+            }
         }
 
         private void GenerateObstacles(GameLevel currentLevel)
@@ -50,6 +76,8 @@ namespace Assets.Scripts
 
                 if (currentObstacle != null)
                 {
+                    SpriteRenderer obstacleRenderer = currentObstacle.GetComponentInChildren<SpriteRenderer>();
+                    obstacleRenderer.sprite = Resources.Load<Sprite>("Sprites/agac_" + (int)currentLevel);
                     currentObstacle.transform.parent = obstacleContainer;
                 }
             }

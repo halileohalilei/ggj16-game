@@ -182,6 +182,7 @@ MonoBehaviour:
   ObstaclePrefab: {fileID: 107508, guid: 86c80313614c4054a929d9abe85a3beb, type: 2}
   CollectiblePrefab: {fileID: 105592, guid: a3cbf5fb643514c4abd0ae989e35d220, type: 2}
   MagicCircle: {fileID: 292964006}
+  Plane: {fileID: 1548889958}
   ObstacleCount: 20
   CollectibleCount: 20
 --- !u!4 &55374383
@@ -1011,7 +1012,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49dfe8268a8140f40bc4b94d499ccc8e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
