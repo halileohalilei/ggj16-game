@@ -37,6 +37,8 @@ namespace Assets.Scripts
             var randomX = random.NextDouble() * (EastEnd - WestEnd - 2) + WestEnd - 1;
             var randomZ = random.NextDouble() * (NorthEnd - SouthEnd - 2) + SouthEnd - 1;
             MagicCircle.transform.position = new Vector3((float) (randomX/2), 0.1f, (float) (randomZ/2));
+            MagicCircle.GetComponent<SpriteRenderer>().sprite = 
+                Resources.Load<Sprite>("Sprites/magic_circles/magicli" + random.Next(1, 5));
 
             MeshRenderer planeRenderer = Plane.GetComponent<MeshRenderer>();
             switch (currentLevel)
