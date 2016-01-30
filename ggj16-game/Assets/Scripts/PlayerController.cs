@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class PlayerController : MonoBehaviour
     {
-
         private Direction _direction;
         private Animator _animator;
         private Rigidbody _rigidbody;
@@ -40,6 +40,19 @@ namespace Assets.Scripts
             velocity = Vector3.ClampMagnitude(new Vector3(velocity.x, 0f, velocity.z), _maxSpeed);
             velocity.y = _rigidbody.velocity.y;
             _rigidbody.velocity = velocity;
+
+            if (_rigidbody.velocity.magnitude < 0.01f)
+            {
+                _animator.speed = 0f;
+            }
+            else
+            {
+                if (_animator.speed < 1f)
+                {
+                    _animator.speed = 1f;
+                }
+            }
+
             transform.rotation = new Quaternion();
 
             if (vertical > 0)
