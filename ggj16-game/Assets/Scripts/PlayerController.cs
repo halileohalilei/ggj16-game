@@ -10,6 +10,8 @@ namespace Assets.Scripts
         private Rigidbody _rigidbody;
         private GameObject _cameraAnchor;
 
+        private bool _controlsEnabled = true;
+
         [SerializeField] private float _maxSpeed;
 
         void Start ()
@@ -21,7 +23,7 @@ namespace Assets.Scripts
 	
         void FixedUpdate ()
         {
-            if (UpdateInput())
+            if (_controlsEnabled && UpdateInput())
             {
                 _animator.SetInteger("Direction", (int) _direction);
             }
@@ -76,6 +78,11 @@ namespace Assets.Scripts
                 return false;
             }
             return true;
+        }
+
+        public void DisableControls()
+        {
+            _controlsEnabled = false;
         }
     }
 }

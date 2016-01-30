@@ -15,8 +15,12 @@ namespace Assets.Scripts
 
         private static GameData _instance;
 
+        [SerializeField] private PlaneManager _planeManager;
+        [SerializeField] private PlayerController _player;
+
         void Start()
         {
+            Debug.Log("GameData.Start()");
             _instance = this;
 
             _uiHandler = GameObject.Find("Canvas").GetComponent<UIHandler>();
@@ -25,6 +29,8 @@ namespace Assets.Scripts
             _remainingTimeInThisLevel = 20f;
 
             ChangeLevel();
+            
+            _planeManager.gameObject.SetActive(true);
         }
 
         public GameLevel GetCurrentLevel()
@@ -58,12 +64,19 @@ namespace Assets.Scripts
             _remainingTimeInThisLevel -= Time.deltaTime;
             if (_remainingTimeInThisLevel <= 0f)
             {
-                //TODO some bad shit happens
+                OnLevelFailed();
             }
             else
             {
                 _uiHandler.UpdateRemainingTime(_remainingTimeInThisLevel);
             }
+        }
+
+        private void OnLevelFailed()
+        {
+            _player.DisableControls();
+            _uiHandler.DisableUI();
+            _uiHandler.FadeToBlack();
         }
     }
 }

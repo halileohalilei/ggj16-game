@@ -22,12 +22,13 @@ namespace Assets.Scripts
 
         void Start()
         {
+            Debug.Log("PlaneManager.Start()");
             GeneratePlane();
         }
 
         public void GeneratePlane()
         {
-            GameLevel currentLevel = GameData.GetInstance().GetCurrentLevel();
+            GameLevel currentLevel = GameLevel.Classic;//GameData.GetInstance().GetCurrentLevel();
 
             GenerateObstacles(currentLevel);
             GenerateCollectibles(currentLevel);
