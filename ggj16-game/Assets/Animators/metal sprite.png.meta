@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: ca9c7d6e3af3b764899bf41709649464
+timeCreated: 1454178652
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: metal sprite_0
+    21300002: metal sprite_1
+    21300004: metal sprite_2
+    21300006: metal sprite_3
+    21300008: metal sprite_4
+    21300010: metal sprite_5
+    21300012: metal sprite_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: metal sprite_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 182
+        width: 631
+        height: 697
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.440445, y: 131.96396}
+        - {x: -46.559555, y: 131.96396}
+        - {x: -80.559555, y: 115.96396}
+        - {x: -99.559555, y: 5.9639587}
+        - {x: -76.559555, y: 2.9639587}
+        - {x: -70.559555, y: 7.9639587}
+        - {x: -59.559555, y: 25.963959}
+        - {x: -59.559555, y: 30.963959}
+        - {x: -56.559555, y: 1.9639587}
+        - {x: -70.559555, y: 3.9639587}
+        - {x: -83.559555, y: -0.03604126}
+        - {x: -91.559555, y: -5.0360413}
+        - {x: -118.559555, y: -35.03604}
+        - {x: -118.559555, y: -106.03604}
+        - {x: -76.559555, y: -131.03604}
+        - {x: 86.440445, y: -131.03604}
+        - {x: 120.440445, y: -109.03604}
+        - {x: 120.440445, y: -18.036041}
+        - {x: 97.440445, y: 22.963959}
+    - name: metal sprite_1
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 185
+        width: 630
+        height: 696
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75.300934, y: 20.092468}
+        - {x: 34.300934, y: 21.092468}
+        - {x: 52.300934, y: 82.09247}
+        - {x: 5.300934, y: 132.09247}
+        - {x: -49.699066, y: 132.09247}
+        - {x: -73.699066, y: 114.09247}
+        - {x: -89.699066, y: 7.0924683}
+        - {x: -118.699066, y: -37.90753}
+        - {x: -118.699066, y: -97.90753}
+        - {x: -89.699066, y: -130.90753}
+        - {x: 79.300934, y: -130.90753}
+        - {x: 119.300934, y: -95.90753}
+        - {x: 119.300934, y: -60.90753}
+        - {x: 85.300934, y: -29.907532}
+    - name: metal sprite_2
+      rect:
+        serializedVersion: 2
+        x: 1625
+        y: 182
+        width: 633
+        height: 702
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.78528, y: 8.963959}
+        - {x: 26.785278, y: 101.96396}
+        - {x: 8.785278, y: 107.96396}
+        - {x: 2.7852783, y: 92.96396}
+        - {x: 2.7852783, y: 89.96396}
+        - {x: 2.7852783, y: 106.96396}
+        - {x: 7.7852783, y: 126.96396}
+        - {x: -10.214722, y: 132.96396}
+        - {x: -45.21472, y: 132.96396}
+        - {x: -67.21472, y: 111.96396}
+        - {x: -119.21472, y: 6.9639587}
+        - {x: -119.21472, y: -132.03604}
+        - {x: 108.78528, y: -132.03604}
+        - {x: 119.78528, y: -106.03604}
+        - {x: 119.78528, y: -57.03604}
+        - {x: 74.78528, y: -7.0360413}
+    - name: metal sprite_3
+      rect:
+        serializedVersion: 2
+        x: 2406
+        y: 185
+        width: 629
+        height: 696
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.57837, y: 30.092468}
+        - {x: 26.57837, y: 110.09247}
+        - {x: 0.57836914, y: 130.09247}
+        - {x: -11.421631, y: 132.09247}
+        - {x: -62.42163, y: 132.09247}
+        - {x: -118.42163, y: 11.092468}
+        - {x: -118.42163, y: -98.90753}
+        - {x: -104.42163, y: -130.90753}
+        - {x: 78.57837, y: -130.90753}
+        - {x: 118.57837, y: -117.90753}
+        - {x: 118.57837, y: -58.90753}
+    - name: metal sprite_4
+      rect:
+        serializedVersion: 2
+        x: 3151
+        y: 182
+        width: 632
+        height: 697
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20.829224, y: 131.96396}
+        - {x: -75.17078, y: 131.96396}
+        - {x: -110.17078, y: 40.96396}
+        - {x: -88.17078, y: 3.9639587}
+        - {x: -77.17078, y: 2.9639587}
+        - {x: -71.17078, y: 7.9639587}
+        - {x: -60.170776, y: 24.963959}
+        - {x: -71.17078, y: 3.9639587}
+        - {x: -84.17078, y: -0.03604126}
+        - {x: -99.17078, y: -13.036041}
+        - {x: -119.17078, y: -47.03604}
+        - {x: -119.17078, y: -94.03604}
+        - {x: -76.17078, y: -131.03604}
+        - {x: 42.829224, y: -131.03604}
+        - {x: 119.82922, y: -107.03604}
+        - {x: 119.82922, y: 42.96396}
+        - {x: 91.82922, y: 100.96396}
+    - name: metal sprite_5
+      rect:
+        serializedVersion: 2
+        x: 3928
+        y: 180
+        width: 634
+        height: 699
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -84.38245, y: 4.711609}
+        - {x: -73.38245, y: 8.711609}
+        - {x: -62.382446, y: 27.711609}
+        - {x: -71.38245, y: 7.711609}
+        - {x: -101.38245, y: -7.288391}
+        - {x: -119.38245, y: -57.28839}
+        - {x: -119.38245, y: -88.28839}
+        - {x: -102.38245, y: -108.28839}
+        - {x: -76.38245, y: -131.28839}
+        - {x: 82.61755, y: -131.28839}
+        - {x: 120.61755, y: -122.28839}
+        - {x: 120.61755, y: -22.288391}
+        - {x: 29.617554, y: 132.71161}
+        - {x: -57.382446, y: 132.71161}
+        - {x: -95.38245, y: 109.71161}
+        - {x: -92.38245, y: 12.711609}
+    - name: metal sprite_6
+      rect:
+        serializedVersion: 2
+        x: 4662
+        y: 182
+        width: 632
+        height: 697
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.23047, y: 89.96396}
+        - {x: -7.7695312, y: 131.96396}
+        - {x: -63.76953, y: 131.96396}
+        - {x: -108.76953, y: 48.96396}
+        - {x: -100.76953, y: 12.963959}
+        - {x: -87.76953, y: 7.9639587}
+        - {x: -97.76953, y: -4.0360413}
+        - {x: -118.76953, y: -45.03604}
+        - {x: -118.76953, y: -97.03604}
+        - {x: -79.76953, y: -131.03604}
+        - {x: 62.23047, y: -131.03604}
+        - {x: 84.23047, y: -124.03604}
+        - {x: 120.23047, y: -107.03604}
+        - {x: 120.23047, y: -42.03604}
+        - {x: 90.23047, y: 14.963959}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

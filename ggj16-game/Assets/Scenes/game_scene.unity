@@ -196,7 +196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &95027819
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -406,7 +406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &292964006
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,11 +474,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292964006}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 1548889962}
-  m_RootOrder: 0
+  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_Children:
+  - {fileID: 1032504135}
+  - {fileID: 1545273830}
+  - {fileID: 773460090}
+  - {fileID: 391911188}
+  m_Father: {fileID: 467980864}
+  m_RootOrder: 2
 --- !u!114 &292964010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,8 +553,35 @@ Transform:
   m_LocalPosition: {x: -20.381573, y: 9.015902, z: -8.765773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 467980864}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &391911187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 391911188}
+  m_Layer: 0
+  m_Name: DancePoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391911188
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391911187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 292964009}
+  m_RootOrder: 3
 --- !u!1 &467980863
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,11 +607,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 340550738}
   - {fileID: 1548889962}
   - {fileID: 1135441327}
+  - {fileID: 292964009}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &498555807
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,12 +692,39 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 498555807}
-  m_LocalRotation: {x: 0.30037397, y: 0, z: 0, w: 0.9538216}
-  m_LocalPosition: {x: 0, y: 1.76, z: -2.51}
+  m_LocalRotation: {x: 0.41929713, y: 0, z: 0, w: 0.9078491}
+  m_LocalPosition: {x: 0, y: 3.21, z: -2.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1789419508}
   m_RootOrder: 0
+--- !u!1 &773460089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 773460090}
+  m_Layer: 0
+  m_Name: DancePoint3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &773460090
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 773460089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 292964009}
+  m_RootOrder: 2
 --- !u!1 &808488762
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -828,7 +886,7 @@ RectTransform:
   - {fileID: 95027820}
   - {fileID: 21151745}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -927,6 +985,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1032504134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1032504135}
+  m_Layer: 0
+  m_Name: DancePoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1032504135
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1032504134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 292964009}
+  m_RootOrder: 0
 --- !u!1 &1135441326
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +1038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 467980864}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1324142688
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +1067,33 @@ Transform:
   - {fileID: 969110269}
   - {fileID: 1789419508}
   m_Father: {fileID: 1797445107}
+  m_RootOrder: 1
+--- !u!1 &1545273829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1545273830}
+  m_Layer: 0
+  m_Name: DancePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1545273830
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545273829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 292964009}
   m_RootOrder: 1
 --- !u!1 &1548889958
 GameObject:
@@ -1056,10 +1168,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children:
-  - {fileID: 292964009}
+  m_Children: []
   m_Father: {fileID: 467980864}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!54 &1548889963
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1104,6 +1215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _planeManager: {fileID: 55374382}
   _player: {fileID: 969110272}
+  _plane: {fileID: 1548889958}
+  _obstacles: {fileID: 1135441326}
+  _collectibles: {fileID: 1833511626}
 --- !u!4 &1570307327
 Transform:
   m_ObjectHideFlags: 0
@@ -1172,7 +1286,7 @@ Transform:
   - {fileID: 1833511627}
   - {fileID: 1324142689}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1833511626
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace Assets.Scripts
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-                Debug.Log("TRIGGERED!!!");
+                GameData.GetInstance().SwitchToSecondPhase();
             }
         }
     }

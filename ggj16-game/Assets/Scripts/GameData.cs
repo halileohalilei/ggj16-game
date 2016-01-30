@@ -13,10 +13,19 @@ namespace Assets.Scripts
         private int _totalPointsCollected;
         private float _remainingTimeInThisLevel;
 
+        private bool _firstPhaseEnded = false;
+
         private static GameData _instance;
 
         [SerializeField] private PlaneManager _planeManager;
         [SerializeField] private PlayerController _player;
+        [SerializeField] private GameObject _plane;
+        [SerializeField] private GameObject _obstacles;
+        [SerializeField] private GameObject _collectibles;
+
+        private Vector3 _cameraTargetPos;
+        private float _cameraSpeed = 2f;
+        private bool _isCameraMoving = false;
 
         void Start()
         {
@@ -61,22 +70,54 @@ namespace Assets.Scripts
 
         void Update()
         {
-            _remainingTimeInThisLevel -= Time.deltaTime;
-            if (_remainingTimeInThisLevel <= 0f)
+            if (!_firstPhaseEnded)
             {
-                OnLevelFailed();
+                _remainingTimeInThisLevel -= Time.deltaTime;
+                if (_remainingTimeInThisLevel <= 0f)
+                {
+                    OnLevelFailed();
+                }
+                else
+                {
+                    _uiHandler.UpdateRemainingTime(_remainingTimeInThisLevel);
+                }
             }
             else
             {
-                _uiHandler.UpdateRemainingTime(_remainingTimeInThisLevel);
+                if (Vector3.Magnitude(_cameraTargetPos - Camera.main.transform.position) > 0.001f)
+                {
+                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, 
+                        _cameraTargetPos, _cameraSpeed * Time.deltaTime);
+                }
             }
         }
 
         private void OnLevelFailed()
         {
+            EndFirstPhase();
+            _uiHandler.FadeToBlack();
+        }
+
+        private void EndFirstPhase()
+        {
             _player.DisableControls();
             _uiHandler.DisableUI();
-            _uiHandler.FadeToBlack();
+            _firstPhaseEnded = true;
+        }
+
+        public void SwitchToSecondPhase()
+        {
+            EndFirstPhase();
+            _plane.SetActive(false);
+            _obstacles.SetActive(false);
+            _collectibles.SetActive(false);
+            _player.GetComponent<Rigidbody>().isKinematic = true;
+
+            Transform magicCircle = GameObject.Find("Magic Circle").transform;
+            Transform camTransform = Camera.main.transform;
+            _cameraTargetPos = camTransform.position;
+            _cameraTargetPos = magicCircle.position;
+            _cameraTargetPos = _cameraTargetPos - camTransform.forward*6f;
         }
     }
 }

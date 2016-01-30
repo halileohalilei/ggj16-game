@@ -29,7 +29,7 @@ namespace Assets.Scripts
 
         public void GeneratePlane()
         {
-            GameLevel currentLevel = GameLevel.Metal;//GameData.GetInstance().GetCurrentLevel();
+            GameLevel currentLevel = GameData.GetInstance().GetCurrentLevel();
 
             GenerateObstacles(currentLevel);
             GenerateCollectibles(currentLevel);
