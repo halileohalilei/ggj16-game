@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstaclePrefab: {fileID: 107508, guid: 86c80313614c4054a929d9abe85a3beb, type: 2}
   CollectiblePrefab: {fileID: 105592, guid: a3cbf5fb643514c4abd0ae989e35d220, type: 2}
+  MagicCircle: {fileID: 292964006}
   ObstacleCount: 20
   CollectibleCount: 20
 --- !u!4 &55374383
@@ -414,6 +415,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 292964009}
   - 212: {fileID: 292964007}
+  - 65: {fileID: 292964008}
+  - 114: {fileID: 292964010}
   m_Layer: 0
   m_Name: Magic Circle
   m_TagString: Untagged
@@ -448,9 +451,21 @@ SpriteRenderer:
   m_SortingLayerID: -1128415819
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 12020fdc73308b64aab1a2a92b980572, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6985294, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!65 &292964008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 292964006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &292964009
 Transform:
   m_ObjectHideFlags: 0
@@ -463,6 +478,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1548889962}
   m_RootOrder: 0
+--- !u!114 &292964010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 292964006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6643642cdc0b5594b81d0f834c5fa2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &340550736
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +858,7 @@ GameObject:
   - 114: {fileID: 969110270}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

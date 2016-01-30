@@ -11,15 +11,15 @@ namespace Assets.Scripts
         private const int EastEnd = 10;
         private const int WestEnd = -10;
 
-        public GameObject ObstaclePrefab = null;
-        public GameObject CollectiblePrefab = null;
+        [SerializeField] private GameObject ObstaclePrefab = null;
+        [SerializeField] private GameObject CollectiblePrefab = null;
+        [SerializeField] private GameObject MagicCircle = null;
 
         [SerializeField]
         private int ObstacleCount = 0;
         [SerializeField]
         private int CollectibleCount = 0;
         
-
         void Start()
         {
             Debug.Log("PlaneManager.Start()");
@@ -32,6 +32,10 @@ namespace Assets.Scripts
 
             GenerateObstacles(currentLevel);
             GenerateCollectibles(currentLevel);
+            Random random = new Random();
+            var randomX = random.NextDouble() * (EastEnd - WestEnd - 2) + WestEnd - 1;
+            var randomZ = random.NextDouble() * (NorthEnd - SouthEnd - 2) + SouthEnd - 1;
+            MagicCircle.transform.position = new Vector3((float) (randomX/2), 0.1f, (float) (randomZ/2));
         }
 
         private void GenerateObstacles(GameLevel currentLevel)
