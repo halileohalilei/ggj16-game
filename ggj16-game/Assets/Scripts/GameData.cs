@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts
+﻿using System;
+
+namespace Assets.Scripts
 {
     class GameData
     {
@@ -6,15 +8,13 @@
 
         private GameLevel _currentLevel;
         private int _pointsCollectedThisLevel;
-
-        public enum GameLevel
-        {
-            Jazz, Metal, Classic, Electronic
-        }
+        private int _totalPointsCollected;
 
         private GameData()
         {
-            _pointsCollectedThisLevel = 0;
+            _totalPointsCollected = 0;
+
+            ChangeLevel();
         }
 
         public static GameData GetInstance()
@@ -27,6 +27,16 @@
         public GameLevel GetCurrentLevel()
         {
             return _currentLevel;
+        }
+
+        private void ChangeLevel()
+        {
+            _totalPointsCollected += _pointsCollectedThisLevel;
+            _pointsCollectedThisLevel = 0;
+
+            Array values = Enum.GetValues(typeof(GameLevel));
+            Random random = new Random();
+            _currentLevel = (GameLevel)values.GetValue(random.Next(values.Length));
         }
     }
 }
