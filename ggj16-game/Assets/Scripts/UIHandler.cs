@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         private bool _fadeToBlack; // \m/
 
-        private float _fadeSpeed = 2f;
+        private float _fadeSpeed = 3f;
         
         void Start ()
         {
