@@ -36,7 +36,7 @@ namespace Assets.Scripts
 
             _uiHandler = GameObject.Find("Canvas").GetComponent<UIHandler>();
             
-            _remainingTimeInThisLevel = 20f;
+            _remainingTimeInThisLevel = 30f;
 
             ChangeLevel();
             

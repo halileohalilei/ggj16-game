@@ -98,7 +98,7 @@ namespace Assets.Scripts
                 if (currentCollectible != null)
                 {
                     SpriteRenderer collectibleRenderer = currentCollectible.GetComponentInChildren<SpriteRenderer>();
-                    collectibleRenderer.sprite = Resources.Load<Sprite>("Sprites/nota_" + (int)currentLevel);
+                    collectibleRenderer.sprite = Resources.Load<Sprite>("Sprites/musical_notes/nota_k_" + (int)currentLevel);
                     currentCollectible.transform.parent = collectibleContainer;
                 }
             }
