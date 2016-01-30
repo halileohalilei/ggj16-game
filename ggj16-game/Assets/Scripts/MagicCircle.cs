@@ -7,7 +7,6 @@ namespace Assets.Scripts
 
         void OnTriggerEnter(Collider other)
         {
-//            Debug.Log(other.transform.tag);
             if (other.gameObject.tag.Equals("Player"))
             {
                 Debug.Log("TRIGGERED!!!");
