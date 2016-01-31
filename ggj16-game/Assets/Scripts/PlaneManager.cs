@@ -23,7 +23,6 @@ namespace Assets.Scripts
         
         void Start()
         {
-//            Debug.Log("PlaneManager.Start()");
             GeneratePlane();
         }
 

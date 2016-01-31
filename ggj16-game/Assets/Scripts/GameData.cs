@@ -59,7 +59,7 @@ namespace Assets.Scripts
             _uiHandler.UpdatePointsCollected(_totalPointsCollected);
         }
 
-        private void ChangeLevel()
+        private GameLevel ChangeLevel()
         {
             _totalPointsCollected += _pointsCollectedThisLevel;
             _pointsCollectedThisLevel = 0;
@@ -67,6 +67,7 @@ namespace Assets.Scripts
             Array values = Enum.GetValues(typeof(GameLevel));
             Random random = new Random();
             _currentLevel = (GameLevel)values.GetValue(random.Next(values.Length));
+            return _currentLevel;
         }
 
         void Update()
@@ -134,6 +135,13 @@ namespace Assets.Scripts
             _cameraTargetPos = _cameraTargetPos - camTransform.forward*6f;
 
             _isCameraMoving = true;
+
+            AudioManager.GetInstance().FadeOutSong();
+        }
+
+        public void StartSecondPhase()
+        {
+            AudioManager.GetInstance().StartSong(ChangeLevel());
         }
     }
 }

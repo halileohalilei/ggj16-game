@@ -61,6 +61,7 @@ namespace Assets.Scripts
                     {
                         _countdownActive = false;
                         _countdownText.enabled = false;
+                        GameData.GetInstance().StartSecondPhase();
                     }
                 }
             }
