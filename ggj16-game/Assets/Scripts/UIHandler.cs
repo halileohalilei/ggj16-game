@@ -12,6 +12,10 @@ namespace Assets.Scripts
         private Text _countdownText;
         private Image _fadeOutImage;
 
+        private Transform _moveIndicators;
+
+        private Text _currentIndicator;
+
         private bool _fadeToBlack; // \m/
 
         private float _fadeSpeed = 3f;
@@ -27,6 +31,14 @@ namespace Assets.Scripts
             _fadeOutImage = transform.FindChild("FadeOut").GetComponent<Image>();
 
             _countdownText.enabled = false;
+
+            _moveIndicators = transform.FindChild("MoveIndicators");
+            _moveIndicators.FindChild("Left").GetComponent<Text>().enabled = false;
+            _moveIndicators.FindChild("Right").GetComponent<Text>().enabled = false;
+            _moveIndicators.FindChild("Up").GetComponent<Text>().enabled = false;
+            _moveIndicators.FindChild("Down").GetComponent<Text>().enabled = false;
+
+            _moveIndicators.gameObject.SetActive(false);
         }
 
         void Update()
@@ -94,6 +106,22 @@ namespace Assets.Scripts
             _countdownText.enabled = true;
             _countdownTimer = 5f;
             _countdownActive = true;
+        }
+
+        public void ToggleIndicator(string indicatorName)
+        {
+            if (!_moveIndicators.gameObject.activeSelf)
+            {
+                _moveIndicators.gameObject.SetActive(true);
+            }
+            if (_currentIndicator != null)
+            {
+                _currentIndicator.enabled = false;
+            }
+            
+            var indicator = _moveIndicators.FindChild(indicatorName).GetComponent<Text>();
+            indicator.enabled = true;
+            _currentIndicator = indicator;
         }
     }
 }

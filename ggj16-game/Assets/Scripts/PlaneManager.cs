@@ -10,6 +10,15 @@ namespace Assets.Scripts
         private const int NorthEnd = 10;
         private const int EastEnd = 10;
         private const int WestEnd = -10;
+        
+        [SerializeField]
+        private GameObject _jazzGodPrefab;
+        [SerializeField]
+        private GameObject _electronicGodPrefab;
+        [SerializeField]
+        private GameObject _metalGodPrefab;
+        [SerializeField]
+        private GameObject _classicalGodPrefab;
 
         [SerializeField] private GameObject ObstaclePrefab = null;
         [SerializeField] private GameObject CollectiblePrefab = null;
@@ -100,6 +109,26 @@ namespace Assets.Scripts
                     collectibleRenderer.sprite = Resources.Load<Sprite>("Sprites/musical_notes/nota_k_" + (int)currentLevel);
                     currentCollectible.transform.parent = collectibleContainer;
                 }
+            }
+        }
+
+        public void SpawnGod(GameLevel level)
+        {
+            Vector3 spawnPosition = MagicCircle.transform.position + new Vector3(5f, 0f, 0f);
+            switch (level)
+            {
+                case GameLevel.Classic:
+                    Instantiate(_classicalGodPrefab, spawnPosition, Quaternion.identity);
+                    break;
+                case GameLevel.Jazz:
+                    Instantiate(_jazzGodPrefab, spawnPosition, Quaternion.identity);
+                    break;
+                case GameLevel.Electronic:
+                    Instantiate(_electronicGodPrefab, spawnPosition, Quaternion.identity);
+                    break;
+                case GameLevel.Metal:
+                    Instantiate(_metalGodPrefab, spawnPosition, Quaternion.identity);
+                    break;
             }
         }
     }

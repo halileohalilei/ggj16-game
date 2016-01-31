@@ -10,6 +10,11 @@ namespace Assets.Scripts
         private Rigidbody _rigidbody;
         private GameObject _cameraAnchor;
 
+        [SerializeField] private Transform _dancePointLeft;
+        [SerializeField] private Transform _dancePointRight;
+        [SerializeField] private Transform _dancePointUp;
+        [SerializeField] private Transform _dancePointDown;
+
         private bool _controlsEnabled = true;
 
         [SerializeField] private float _maxSpeed;
@@ -83,6 +88,28 @@ namespace Assets.Scripts
         public void DisableControls()
         {
             _controlsEnabled = false;
+        }
+
+        public void MoveTo(string position)
+        {
+            _animator.speed = 0f;
+            _animator.SetInteger("Direction", 0);
+            if (position.Equals("Left"))
+            {
+                transform.position = _dancePointLeft.position;
+            }
+            else if (position.Equals("Right"))
+            {
+                transform.position = _dancePointRight.position;
+            }
+            else if (position.Equals("Up"))
+            {
+                transform.position = _dancePointUp.position;
+            }
+            else if (position.Equals("Down"))
+            {
+                transform.position = _dancePointDown.position;
+            }
         }
     }
 }

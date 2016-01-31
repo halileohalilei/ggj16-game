@@ -100,6 +100,7 @@ namespace Assets.Scripts
                 {
                     if (_startSecondPhase)
                     {
+                        Camera.main.transform.parent = null;
                         _uiHandler.StartCountdown();
                         _startSecondPhase = false;
                     }
@@ -142,6 +143,8 @@ namespace Assets.Scripts
         public void StartSecondPhase()
         {
             AudioManager.GetInstance().StartSong(ChangeLevel());
+            TempoManager.GetInstance().StartGame();
+            _planeManager.SpawnGod(_currentLevel);
         }
     }
 }
