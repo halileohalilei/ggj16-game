@@ -93,6 +93,7 @@ namespace Assets.Scripts
         public void EndGame()
         {
             _songStartTime = -1;
+            UIHandler.GetInstance().FadeToWhite();
         }
 
         public bool IsGameActive()

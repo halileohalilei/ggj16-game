@@ -18,15 +18,24 @@ namespace Assets.Scripts
 
         private Text _currentIndicator;
 
-        private bool _fadeToBlack; // \m/
+        private int _fading;
 
         private float _fadeSpeed = 3f;
 
         private float _countdownTimer = -1f;
-        private bool _countdownActive = false;
-        
+        private bool _countdownActive;
+
+        private static UIHandler _instance;
+
+        public static UIHandler GetInstance()
+        {
+            return _instance;
+        }
+
         void Start ()
         {
+            _instance = this;
+
             _remainingTimeText = transform.FindChild("Time Remaining").GetComponent<Text>();
             _pointsCollectedText = transform.FindChild("Points Collected").GetComponent<Text>();
             _countdownText = transform.FindChild("Countdown").GetComponent<Text>();
@@ -45,12 +54,20 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (_fadeToBlack)
+            if (_fading == -1)
             {
                 _fadeOutImage.color = Color.Lerp(_fadeOutImage.color, Color.black, _fadeSpeed*Time.deltaTime);
                 if (_fadeOutImage.color.a > .99f)
                 {
                     SceneManager.LoadScene(1);
+                }
+            }
+            else if (_fading == 1)
+            {
+                _fadeOutImage.color = Color.Lerp(_fadeOutImage.color, Color.white, _fadeSpeed * Time.deltaTime);
+                if (_fadeOutImage.color.a > .99f)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
             else
@@ -99,7 +116,16 @@ namespace Assets.Scripts
 
         public void FadeToBlack()
         {
-            _fadeToBlack = true;
+            _fading = -1;
+            AudioManager.GetInstance().FadeOutSong();
+        }
+
+        public void FadeToWhite()
+        {
+            _fading = 1;
+            Color transparentWhite = Color.white;
+            transparentWhite.a = 0f;
+            _fadeOutImage.color = transparentWhite;
             AudioManager.GetInstance().FadeOutSong();
         }
 
