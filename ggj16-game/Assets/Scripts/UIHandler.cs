@@ -14,6 +14,8 @@ namespace Assets.Scripts
 
         private Transform _moveIndicators;
 
+        private AudioSource _musicSource;
+
         private Text _currentIndicator;
 
         private bool _fadeToBlack; // \m/
@@ -46,7 +48,6 @@ namespace Assets.Scripts
             if (_fadeToBlack)
             {
                 _fadeOutImage.color = Color.Lerp(_fadeOutImage.color, Color.black, _fadeSpeed*Time.deltaTime);
-
                 if (_fadeOutImage.color.a > .99f)
                 {
                     SceneManager.LoadScene(1);
@@ -99,6 +100,7 @@ namespace Assets.Scripts
         public void FadeToBlack()
         {
             _fadeToBlack = true;
+            AudioManager.GetInstance().FadeOutSong();
         }
 
         public void StartCountdown()
