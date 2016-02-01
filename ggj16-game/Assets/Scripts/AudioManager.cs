@@ -10,7 +10,7 @@ namespace Assets.Scripts
         private bool _fadingOut;
 
         private float _remainingTime;
-        private bool _songPlaying = false;
+        private bool _songPlaying;
 
         [SerializeField] private AudioSource _metalAudioSource;
         [SerializeField] private AudioSource _jazzAudioSource;
@@ -37,6 +37,10 @@ namespace Assets.Scripts
                     _activeAudioSource.Stop();
                     _fadingOut = false;
                     _songPlaying = false;
+                    if (TempoManager.GetInstance().IsGameActive())
+                    {
+                        TempoManager.GetInstance().EndGame();
+                    }
                 }
             }
             else if (_songPlaying)

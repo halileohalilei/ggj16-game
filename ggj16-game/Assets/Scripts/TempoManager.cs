@@ -89,5 +89,15 @@ namespace Assets.Scripts
             _lastTick = _songStartTime;
             _nextTick = _lastTick + 60f/_currentBpm; // + _offsets[i];
         }
+
+        public void EndGame()
+        {
+            _songStartTime = -1;
+        }
+
+        public bool IsGameActive()
+        {
+            return _songStartTime > 0;
+        }
     }
 }
