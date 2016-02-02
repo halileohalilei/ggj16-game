@@ -23,6 +23,8 @@ namespace Assets.Scripts
 
         private float _currentBpm = -1f;
 
+        private int _successfulHits = 0;
+        private int _missedHits = 0;
         private int _totalTicks = 0;
 
         private float _tolerance = 0.3f;
@@ -53,19 +55,23 @@ namespace Assets.Scripts
                         _lastTick = _nextTick;
                         _nextTick = _lastTick + 60f/_currentBpm;
                         nextTickAssigned = true;
+                        _successfulHits++;
+                        _totalTicks++;
                     }
                     else
                     {
                         Debug.Log("Missed!");
+                        _missedHits++;
                     }
                 }
 
                 if (Time.time > _nextTick + _tolerance)
                 {
+                    Debug.Log("Late!");
                     _lastTick = _nextTick;
                     _nextTick = _lastTick + 60f/_currentBpm;
                     nextTickAssigned = true;
-                    Debug.Log("Late!");
+                    _totalTicks++;
                 }
                 if (nextTickAssigned)
                 {
@@ -93,6 +99,7 @@ namespace Assets.Scripts
         public void EndGame()
         {
             _songStartTime = -1;
+            GameData.GetInstance().SetRemainingTime(60f * (_successfulHits - _missedHits) / _totalTicks);
             UIHandler.GetInstance().FadeToWhite();
         }
 

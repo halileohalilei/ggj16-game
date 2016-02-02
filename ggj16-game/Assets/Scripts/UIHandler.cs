@@ -59,7 +59,7 @@ namespace Assets.Scripts
                 _fadeOutImage.color = Color.Lerp(_fadeOutImage.color, Color.black, _fadeSpeed*Time.deltaTime);
                 if (_fadeOutImage.color.a > .99f)
                 {
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene(2);
                 }
             }
             else if (_fading == 1)

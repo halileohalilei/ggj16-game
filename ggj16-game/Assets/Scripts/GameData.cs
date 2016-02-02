@@ -8,14 +8,14 @@ namespace Assets.Scripts
     {
         private UIHandler _uiHandler;
 
-        private GameLevel _currentLevel;
-        private int _pointsCollectedThisLevel;
-        private float _remainingTimeInThisLevel;
-
+        private static GameLevel _currentLevel = GameLevel.Electronic;
+        private static float _remainingTimeInThisLevel = 30f;
         private static int _totalPointsCollected;
 
-        private bool _firstPhaseEnded = false;
-        private bool _startSecondPhase = false;
+        private int _pointsCollectedThisLevel;
+
+        private bool _firstPhaseEnded;
+        private bool _startSecondPhase;
 
         private static GameData _instance;
 
@@ -27,7 +27,7 @@ namespace Assets.Scripts
 
         private Vector3 _cameraTargetPos;
         private float _cameraSpeed = 2f;
-        private bool _isCameraMoving = false;
+        private bool _isCameraMoving;
 
         void Start()
         {
@@ -35,10 +35,7 @@ namespace Assets.Scripts
             _instance = this;
 
             _uiHandler = GameObject.Find("Canvas").GetComponent<UIHandler>();
-            
-            _remainingTimeInThisLevel = 30f;
-
-            ChangeLevel();
+            _uiHandler.UpdatePointsCollected(_totalPointsCollected);
             
             _planeManager.gameObject.SetActive(true);
         }
@@ -145,6 +142,23 @@ namespace Assets.Scripts
             AudioManager.GetInstance().StartSong(ChangeLevel());
             TempoManager.GetInstance().StartGame();
             _planeManager.SpawnGod(_currentLevel);
+        }
+
+        public void SetRemainingTime(float remainingTime)
+        {
+            _remainingTimeInThisLevel = remainingTime;
+        }
+
+        public void ResetGame()
+        {
+            _totalPointsCollected = 0;
+            _remainingTimeInThisLevel = 30f;
+            _currentLevel = GameLevel.Electronic;
+        }
+
+        public int GetTotalPointsCollected()
+        {
+            return _totalPointsCollected;
         }
     }
 }
