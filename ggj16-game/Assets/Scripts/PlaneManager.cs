@@ -19,6 +19,10 @@ namespace Assets.Scripts
         private GameObject _metalGodPrefab;
         [SerializeField]
         private GameObject _classicalGodPrefab;
+        [SerializeField]
+        private GameObject[] _rockPrefabs;
+
+        private Transform _obstacleContainer;
 
         [SerializeField] private GameObject ObstaclePrefab = null;
         [SerializeField] private GameObject CollectiblePrefab = null;
@@ -29,7 +33,10 @@ namespace Assets.Scripts
         private int ObstacleCount = 0;
         [SerializeField]
         private int CollectibleCount = 0;
-        
+
+        private readonly Random _random = new Random();
+
+
         void Start()
         {
             GeneratePlane();
@@ -39,14 +46,17 @@ namespace Assets.Scripts
         {
             GameLevel currentLevel = GameData.GetInstance().GetCurrentLevel();
 
+
+            _obstacleContainer = GameObject.Find("Obstacles").transform;
+
             GenerateObstacles(currentLevel);
             GenerateCollectibles(currentLevel);
-            Random random = new Random();
-            var randomX = random.NextDouble() * (EastEnd - WestEnd - 2) + WestEnd - 1;
-            var randomZ = random.NextDouble() * (NorthEnd - SouthEnd - 2) + SouthEnd - 1;
+            GenerateBorderObstacles(currentLevel);
+            var randomX = _random.NextDouble() * (EastEnd - WestEnd - 2) + WestEnd - 1;
+            var randomZ = _random.NextDouble() * (NorthEnd - SouthEnd - 2) + SouthEnd - 1;
             MagicCircle.transform.position = new Vector3((float) (randomX/2), 0.1f, (float) (randomZ/2));
             MagicCircle.GetComponent<SpriteRenderer>().sprite = 
-                Resources.Load<Sprite>("Sprites/magic_circles/magicli" + random.Next(1, 5));
+                Resources.Load<Sprite>("Sprites/magic_circles/magicli" + _random.Next(1, 5));
 
             MeshRenderer planeRenderer = Plane.GetComponent<MeshRenderer>();
             switch (currentLevel)
@@ -72,6 +82,60 @@ namespace Assets.Scripts
                     break;
                 }
             }
+
+        }
+
+        private void GenerateBorderObstacles(GameLevel currentLevel)
+        {
+            float numObstacles = 50;
+            for (float i = 0; i < numObstacles; i++)
+            {
+                var randomDisplacement = new Vector3((float)_random.NextDouble() - .5f, 0f, 0f);
+                var position = new Vector3(WestEnd -.5f, 0f, Mathf.Lerp(SouthEnd - .5f, NorthEnd + .5f, i / numObstacles));
+                SpawnBorderObstacle(position + randomDisplacement, currentLevel);
+                randomDisplacement = new Vector3((float)_random.NextDouble() - .5f, 0f, 0f);
+                position = new Vector3(EastEnd + .5f, 0f, Mathf.Lerp(SouthEnd - .5f, NorthEnd + .5f, i / numObstacles));
+                SpawnBorderObstacle(position + randomDisplacement, currentLevel);
+                randomDisplacement = new Vector3(0f, 0f, (float)_random.NextDouble() - .5f);
+                position = new Vector3(Mathf.Lerp(WestEnd - .5f, EastEnd + .5f, i / numObstacles), 0f, SouthEnd - .5f);
+                SpawnBorderObstacle(position + randomDisplacement, currentLevel);
+                randomDisplacement = new Vector3(0f, 0f, (float)_random.NextDouble() - .5f);
+                position = new Vector3(Mathf.Lerp(WestEnd - .5f, EastEnd + .5f, i / numObstacles), 0f, NorthEnd + .5f);
+                SpawnBorderObstacle(position + randomDisplacement, currentLevel);
+            }
+        }
+
+        private void SpawnBorderObstacle(Vector3 position, GameLevel currentLevel)
+        {
+            string[] rockTypes = { "high", "mid", "low" };
+            int[] numRockTypes = { 5, 4, 6 };
+            
+            var obstacleType = _random.Next(0, 4);
+            GameObject obstacle;
+            if (obstacleType == 0)
+            {
+                obstacle = (GameObject)Instantiate(ObstaclePrefab, position, Quaternion.identity);
+            }
+            else
+            {
+                obstacle = (GameObject)Instantiate(_rockPrefabs[obstacleType-1], position, Quaternion.identity);
+            }
+
+            if (obstacle != null)
+            {
+                SpriteRenderer obstacleRenderer = obstacle.GetComponentInChildren<SpriteRenderer>();
+                if (obstacleType == 0)
+                {
+                    obstacleRenderer.sprite = Resources.Load<Sprite>("Sprites/agac_" + (int)currentLevel);
+                }
+                else
+                {
+                    obstacleRenderer.sprite =
+                        Resources.Load<Sprite>("Sprites/taslar/rock_" + rockTypes[obstacleType-1] + "_" + _random.Next(1, numRockTypes[obstacleType-1] + 1));
+                    
+                }
+                obstacle.transform.parent = _obstacleContainer;
+            }
         }
 
         private void GenerateObstacles(GameLevel currentLevel)
@@ -81,7 +145,7 @@ namespace Assets.Scripts
             var zPositions = Util.GenerateRandomArray(SouthEnd, NorthEnd);
             for (var i = 0; i < ObstacleCount; i++)
             {
-                var randomPosition = new Vector3(xPositions[i], ObstaclePrefab.transform.position.y, zPositions[i]);
+                var randomPosition = new Vector3(xPositions[i], 0, zPositions[i]);
                 var currentObstacle = (GameObject) Instantiate(ObstaclePrefab, randomPosition, Quaternion.identity);
 
                 if (currentObstacle != null)
